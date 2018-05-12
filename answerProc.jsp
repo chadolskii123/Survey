@@ -133,27 +133,9 @@
 		}
 	
 
-		/*
 		
-		for (int i = 0; i < CheckBoxQuestion.length; i++) {
-						int tmp = Integer.parseInt(tmpArray[i]);
-						//tmpArray[i] = String.valueOf(tmp + 1);
-					}
-					for(int i = 0; i < tmpArray.length; i++){
-						out.print(tmpArray[i] + " ");
-					}
-					/*
-					for (int i = 0; i < tmpArray.length; i++) {
-						if (i == (tmpArray.length - 1)) {
-							/* WriterText += tmpArray[i] + "/";
-							out.print(tmpArray[i] + "/");
-						} //마지막이 아니면
-						else {
-							out.print(tmpArray[i] + "\\n\\r");
-						} //마지막이면 /가 아니라 \n
-					} */
 	%>
 
-	<%-- <jsp:forward page="endPage.jsp"></jsp:forward> --%>
+	<jsp:forward page="endPage.jsp"></jsp:forward>
 </body>
 </html>
