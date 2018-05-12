@@ -43,7 +43,8 @@
 				<%} 
 		else if(userID.equals("admin")){
 					%>
-					<li><a href = "#">설문지 관리</a></li>
+					<li><a href = "management.jsp">설문지 관리</a></li>
+					<li><a href = "responsesView.jsp">응답보기</a></li>
 					<li><a href="logout.jsp">로그아웃</a></li>
 					<%} else{ %>
 					<li><a href="logout.jsp">로그아웃</a></li>
@@ -62,7 +63,8 @@
 							<%} 
 		else if(userID.equals("admin")){
 					%>
-						<li><a href = "#">설문지 관리</a></li>
+						<li><a href = "management.jsp">설문지 관리</a></li>
+						<li><a href = "responsesView.jsp">응답 보기</a></li>
 						<li ><a href="logout.jsp">로그아웃</a></li>
 						
 						<%} 
@@ -88,6 +90,7 @@
 					가기</a>
 			</p>
 		</div>
+		<%if(userID!=null){ %>
 		<section>
 			<form method="post" action="answerProc.jsp">
 				<%
@@ -138,15 +141,12 @@
 				<input type="hidden" name="cnt" value="<%=cnt%>">
 			</form>
 		</section>
-		<footer style="background-color: #000000; color: #FFFFFF">
-			<div style="text-align: center">
-				<small>Copyright &copy; 2018 김소언(Soeon Kim)
-					</h5>
-				</small>
-		</footer>
-	</div>
+		<%} %>
+	
+		
+</div>
+<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
 	<script src="js/bootstrap.js"></script>
 </body>
 </html>

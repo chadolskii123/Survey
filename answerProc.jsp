@@ -31,6 +31,8 @@
 		String RadioBoxQuestion;
 		/* String WriteText; */
 
+		int sum = 0; //각 항목당 응답 갯수
+		
 		try {
 			filePath = application.getRealPath("/WEB-INF/data.txt");
 			reader = new BufferedReader(new FileReader(filePath));
@@ -70,11 +72,19 @@
 								tmpInt++;
 								dataOneline[Integer.parseInt(CheckBoxQuestion[j])] = String.valueOf(tmpInt);
 							}
+							sum = 0;
+							for (int k = 1; k < dataOneline.length -1; k++) {
+								sum += Integer.parseInt(dataOneline[k]);
+							}
+							dataOneline[dataOneline.length-1] = String.valueOf(sum);
 							for (int k = 0; k < dataOneline.length; k++) {
-								if (k != dataOneline.length - 1)
+								if (k != dataOneline.length - 1){
 									IncreaseDataText += dataOneline[k] + "/";
-								else
+								}
+								else{
+							
 									IncreaseDataText += dataOneline[k] + System.lineSeparator();
+								}
 							}
 
 						}
@@ -92,11 +102,19 @@
 								int tmpInt = Integer.parseInt(dataOneline[Integer.parseInt(RadioBoxQuestion)]);
 								tmpInt++;
 								dataOneline[Integer.parseInt(RadioBoxQuestion)] = String.valueOf(tmpInt);
+								sum = 0;
+								for (int k = 1; k < dataOneline.length -1; k++) {
+									sum += Integer.parseInt(dataOneline[k]);
+								}
+								dataOneline[dataOneline.length-1] = String.valueOf(sum);
 								for (int k = 0; k < dataOneline.length; k++) {
-									if (k != dataOneline.length - 1)
+									if (k != dataOneline.length - 1){
 										IncreaseDataText += dataOneline[k] + "/";
-									else
+									}
+									else{
+										
 										IncreaseDataText += dataOneline[k] + System.lineSeparator();
+									}
 								}
 						}
 					
