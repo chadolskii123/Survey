@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -26,21 +26,21 @@
 			id="bs-exapmple-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 
-			        <li class="active"><a href = "management.jsp">설문지 관리</a></li>
-					<li ><a href = "responsesView.jsp">응답보기</a></li>
-					<li><a href="logout.jsp">로그아웃</a></li>
-					
-			
+				<li class="active"><a href="management.jsp">설문지 관리</a></li>
+				<li><a href="responsesView.jsp">응답보기</a></li>
+				<li><a href="logout.jsp">로그아웃</a></li>
+
+
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="ture"
 					aria-expanded="false">admin님<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-					<li ><a href="index.jsp">메인</a></li>
-				    <li class="active"><a href = "management.jsp">설문지 관리</a></li>
-					<li ><a href = "responsesView.jsp">응답보기</a></li>
-					<li><a href="logout.jsp">로그아웃</a></li>
+						<li><a href="index.jsp">메인</a></li>
+						<li class="active"><a href="management.jsp">설문지 관리</a></li>
+						<li><a href="responsesView.jsp">응답보기</a></li>
+						<li><a href="logout.jsp">로그아웃</a></li>
 					</ul></li>
 			</ul>
 
@@ -48,11 +48,64 @@
 		</div>
 	</nav>
 	<div class="container">
-	  이제 여기서 설문지관리(항목추가, 삭제)
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<div class="jumbotron" style="padding-top: 20px;">
+				<form name="form1" method="post" action="insertItemProc.jsp">
+					<h3 stlye="text-align:center;">설문 항목 추가</h3>
+					<div class="form-group">
+						<textarea rows="5" cols="10" class="form-control" placeholder="질문"
+							name=""></textarea>
+					</div>
+					<div class="form-group">
+						
+						<table id="item" border="0" cellspacing="0" cellpadding="0"
+							width="100%">
+							<tr>
+								<td><input type="text" class="form-control"
+									placeholder="항목" name="item0"></td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="form-group">
+						<input type="button" class="btn btn-primary form-control" value="항목추가" onClick="addColumn('item')">
+					</div>
+					<div class="form-group" style="text-align: center;">
+						<div class="btn-group" data-toggle="buttons">
+							<label class="btn btn-primary active"> <input
+								type="radio" name="boxType" value="radioBox" checked>RadioBox
+							</label> <label class="btn btn-primary"> <input type="radio"
+								name="boxType" value="checkBox">CheckBox
+							</label>
+						</div>
+					</div>
+					<input type="button" class="btn btn-primary form-control"
+						value="추가하기" onClick="check()">
+						<input type = "hidden" id = "itemCount" value = "1">
+				</form>
+			</div>
+		</div>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
-	
+	<script>
+		function addColumn(tableid) {
+			var table = document.getElementById(tableid);
+
+			var rowlen = table.rows.length + 1;
+
+			// var row = table.insertRow(); // IE와 Chrome 동작을 달리함.
+			var row = table.insertRow(rowlen - 1); // HTML에서의 권장 표준 문법
+
+			row.insertCell(0).innerHTML = "<td><input type='text' class = 'form-control' placeholder = '항목' name = '"
+					+ tableid  + (rowlen - 1) + "'> </td>";
+
+			form1.itemCount.value = rowlen;
+
+		}
+	</script>
+
 </body>
 </html>
