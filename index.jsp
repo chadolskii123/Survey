@@ -35,12 +35,13 @@
 			<form method="post" action="answerProc.jsp">
 				<%
 					BufferedReader reader = null;
+				int cnt = 0; // n번쨰 문항입니다.
 					try {
 						String filePath = application.getRealPath("/WEB-INF/question.txt");
 						reader = new BufferedReader(new FileReader(filePath));
 						String str;
 						String tmpArray[];
-						int cnt = 0; // n번쨰 문항입니다.
+						
 
 						while ((str = reader.readLine()) != null) {
 							cnt++;
@@ -55,13 +56,13 @@
 				%>
 
 				<label><input type="radio" name="question<%=tmpArray[0]%>"
-					value="<%=tmpArray[0]%>-<%=i - 2%>"><%=tmpArray[i]%></label><br>
+					value="<%=i - 2%>"><%=tmpArray[i]%></label><br>
 
 				<%
 					} else {
 				%>
 				<label><input type="checkbox"
-					name="question<%=tmpArray[0]%>" value="<%=tmpArray[0]%>-<%=i - 2%>"><%=tmpArray[i]%></label><br>
+					name="question<%=tmpArray[0]%>" value="<%=i - 2%>"><%=tmpArray[i]%></label><br>
 				<%
 					}
 							}
@@ -78,6 +79,7 @@
 				<p>
 					<input type="submit" value="제출하기">
 				</p>
+				<input type ="hidden" name = "cnt" value = "<%=cnt%>">
 			</form>
 		</section>
 		<footer style="background-color: #000000; color: #FFFFFF">
