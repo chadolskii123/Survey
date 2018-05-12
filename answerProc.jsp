@@ -74,7 +74,7 @@
 								if (k != dataOneline.length - 1)
 									IncreaseDataText += dataOneline[k] + "/";
 								else
-									IncreaseDataText += dataOneline[k] + "\n";
+									IncreaseDataText += dataOneline[k] + System.lineSeparator();
 							}
 
 						}
@@ -96,7 +96,7 @@
 									if (k != dataOneline.length - 1)
 										IncreaseDataText += dataOneline[k] + "/";
 									else
-										IncreaseDataText += dataOneline[k] + "\n";
+										IncreaseDataText += dataOneline[k] + System.lineSeparator();
 								}
 						}
 					
@@ -115,24 +115,23 @@
 			reader.close();
 		}
 
-		System.out.println(IncreaseDataText);
+		//System.out.println(IncreaseDataText);
 
-		/*
+		
 		
 		BufferedWriter writer = null;
 		try{
-		String filePath = application.getRealPath("/WEB-INF/data/member.txt");
+		filePath = application.getRealPath("/WEB-INF/data.txt");
 		
-		writer = new BufferedWriter(new FileWriter(filePath,true));
-		writer.write( member_id + "," + name + "," + pwd + "," + pwd2 + "," + phone1 + "," + phone2 + "," + phone3 + "," + etc5 + "/");
+		writer = new BufferedWriter(new FileWriter(filePath,false));
+		writer.write(IncreaseDataText);
 		}catch(Exception e){
 		out.print("오류 발생");
 		}
 		finally{
 		writer.close();
 		}
-		
-		*/
+	
 
 		/*
 		
