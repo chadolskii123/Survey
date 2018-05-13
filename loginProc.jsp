@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -46,26 +47,29 @@
 		}
 		tmpArray1 = tmpText.split(System.lineSeparator());
 		
+		String result = "no";
 		for(int i = 0; i< tmpArray1.length; i++){
 			tmpArray2 = tmpArray1[i].split(",");
-			
 			if(tmpArray2[0].equals(userID) && tmpArray2[1].equals(userPassword)){
-				session.setAttribute("userID", userID);
-			  %>
-			  <jsp:forward page="index.jsp"></jsp:forward>
-			  <% 		
+					result = "ok";
+					break;
 			}
 			
-			else if(tmpArray2[0].equals(userID) && !(tmpArray2[1].equals(userPassword))){
-				%>
-				<jsp:forward page="login.jsp"></jsp:forward>
-				<%
+			else {
+				result = "no";
 			}
-			else{
-				%>
-				<jsp:forward page="join.jsp"></jsp:forward>
-				<%
-			}
+		}
+		
+		if(result.equals("ok")){
+			session.setAttribute("userID", userID);
+			%>
+			<jsp:forward page="index.jsp"></jsp:forward>
+			<%
+		}
+		else{
+			%>
+			<jsp:forward page="login.jsp"></jsp:forward>
+			<% 
 		}
 	
 		
