@@ -100,7 +100,7 @@
 			writer.close();
 		}
 	%>
-	 <jsp:forward page="management.jsp"></jsp:forward>
+	 <jsp:forward page="addQuestion.jsp"></jsp:forward>
 </body>
 </html>
 

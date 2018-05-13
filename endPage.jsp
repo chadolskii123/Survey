@@ -31,7 +31,8 @@
 				<%} 
 		else if(userID.equals("admin")){
 					%>
-					<li><a href = "management.jsp">설문지 관리</a></li>
+					<li><a href = "addQuestion.jsp">질문추가</a></li>
+					<li ><a href="deleteQuestion.jsp">질문삭제</a></li>
 					<li><a href = "responsesView.jsp">응답보기</a></li>
 					<li><a href="logout.jsp">로그아웃</a></li>
 					<%} else{ %>
@@ -51,7 +52,8 @@
 							<%} 
 		else if(userID.equals("admin")){
 					%>
-						<li><a href = "management.jsp">설문지 관리</a></li>
+						<li><a href = "addQuestion.jsp">질문추가</a></li>
+						<li ><a href="deleteQuestion.jsp">질문삭제</a></li>
 					<li><a href = "responsesView.jsp">응답보기</a></li>
 						<li ><a href="logout.jsp">로그아웃</a></li>
 						

@@ -1,3 +1,5 @@
+<%@page import="java.io.FileReader"%>
+<%@page import="java.io.BufferedReader"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -26,7 +28,8 @@
 			id="bs-exapmple-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 
-				<li class="active"><a href="management.jsp">설문지 관리</a></li>
+				<li class="active"><a href="addQuestion.jsp">질문추가</a></li>
+				<li ><a href="deleteQuestion.jsp">질문삭제</a></li>
 				<li><a href="responsesView.jsp">응답보기</a></li>
 				<li><a href="logout.jsp">로그아웃</a></li>
 
@@ -38,7 +41,8 @@
 					aria-expanded="false">admin님<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="index.jsp">메인</a></li>
-						<li class="active"><a href="management.jsp">설문지 관리</a></li>
+						<li class="active"><a href="addQuestion.jsp">질문추가</a></li>
+						<li ><a href="deleteQuestion.jsp">질문삭제</a></li>
 						<li><a href="responsesView.jsp">응답보기</a></li>
 						<li><a href="logout.jsp">로그아웃</a></li>
 					</ul></li>
@@ -89,6 +93,10 @@
 			</div>
 		</div>
 	</div>
+	
+
+	
+	
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
