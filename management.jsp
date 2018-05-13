@@ -55,7 +55,7 @@
 					<h3 stlye="text-align:center;">설문 항목 추가</h3>
 					<div class="form-group">
 						<textarea rows="5" cols="10" class="form-control" placeholder="질문"
-							name=""></textarea>
+							name="question"></textarea>
 					</div>
 					<div class="form-group">
 						
@@ -70,6 +70,7 @@
 					</div>
 					<div class="form-group">
 						<input type="button" class="btn btn-primary form-control" value="항목추가" onClick="addColumn('item')">
+						<input type="button" class="btn btn-primary form-control" value="항목삭제" onClick="removeColumn('item')">
 					</div>
 					<div class="form-group" style="text-align: center;">
 						<div class="btn-group" data-toggle="buttons">
@@ -82,7 +83,8 @@
 					</div>
 					<input type="button" class="btn btn-primary form-control"
 						value="추가하기" onClick="check()">
-						<input type = "hidden" id = "itemCount" value = "1">
+						
+						<input type = "hidden" name = "itemCount" value = "1">
 				</form>
 			</div>
 		</div>
@@ -95,7 +97,13 @@
 			var table = document.getElementById(tableid);
 
 			var rowlen = table.rows.length + 1;
-
+			
+		
+			if(rowlen > 7){
+				alert("최대 7개 항목을 입력하실 수 있습니다.");
+				form1.item6.focus();
+				return 0;
+			}
 			// var row = table.insertRow(); // IE와 Chrome 동작을 달리함.
 			var row = table.insertRow(rowlen - 1); // HTML에서의 권장 표준 문법
 
@@ -105,7 +113,24 @@
 			form1.itemCount.value = rowlen;
 
 		}
+		function removeColumn(tableid) {
+			var table = document.getElementById(tableid);
+			var rowlen = table.rows.length -1;
+			
+			if(rowlen < 1) {
+				alert("1개 이상의 항목을 입력하셔야 합니다.");
+				form1.item0.focus();
+				return 0;
+			}
+			
+		    document.getElementById(tableid).deleteRow(rowlen);
+		}
+		function check(){
+			//TODO: 유효성 체크
+			form1.submit();
+		}
 	</script>
+	
 
 </body>
 </html>
