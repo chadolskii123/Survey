@@ -60,7 +60,7 @@
 		
 		//data.txt파일 읽어오기
 		
-		
+		tmpText = "";
 		try {
 			filePath = application.getRealPath("/WEB-INF/data.txt");
 			reader = new BufferedReader(new FileReader(filePath));
@@ -72,23 +72,25 @@
 			out.print("오류가 발생하였습니다.");
 		}
 
-		
+		questionArray1= null;
+		questionArray2 =null;
 		//data.txt에 write할 Text구하기
 		questionArray1 = tmpText.split(System.lineSeparator()); // 1/0/0/0      2/1/1/1/3
 		
 		String writeText2 = "";
 		for (int i = 0; i < questionArray1.length; i++) {
-			writeText2 = "";
+			
 			questionArray2 = questionArray1[i].split("/"); // 1 , 0 , 0 , 0 
 
 			if (questionArray2[0].equals(questionNum)) {
 				continue;
 			}
-			
+		
 			writeText2 += Arrays.toString(questionArray2).replace(", ", "/").replace("[", "").replace("]", "")
 					.trim() + System.lineSeparator();
+			
 		}
-	
+		System.out.println("writeText2 쓴것: " + writeText2);
 		
 
 		 //question.txt쓰기

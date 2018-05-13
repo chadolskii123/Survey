@@ -107,11 +107,13 @@
 						while ((str = reader.readLine()) != null) {
 							cnt++;
 							tmpArray = str.split("/");
+						
 				%>
 				<h5><%=cnt%>번 문항입니다.
 				</h5>
 				<h6><%=tmpArray[2]%></h6>
 				<%
+				
 					for (int i = 3; i < tmpArray.length; i++) {
 								if (tmpArray[1].equals("N")) {
 				%>
