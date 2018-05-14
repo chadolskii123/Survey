@@ -81,6 +81,7 @@
 			
 			filePath = application.getRealPath("/WEB-INF/question.txt");
 			writer = new BufferedWriter(new FileWriter(filePath, true));
+			
 			writer.write(valueText);
 			writer.close();
 		
@@ -95,6 +96,7 @@
 				}
 			
 				willWrite += "0"+System.lineSeparator(); 
+				
 				
 				writer.write(willWrite);
 		} catch (Exception e) {

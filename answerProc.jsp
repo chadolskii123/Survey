@@ -142,6 +142,7 @@
 		filePath = application.getRealPath("/WEB-INF/data.txt");
 		
 		writer = new BufferedWriter(new FileWriter(filePath,false));
+		
 		writer.write(IncreaseDataText);
 		}catch(Exception e){
 		out.print("오류 발생");

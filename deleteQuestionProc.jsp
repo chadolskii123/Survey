@@ -99,6 +99,7 @@
 			filePath = application.getRealPath("/WEB-INF/question.txt");
 
 			writer = new BufferedWriter(new FileWriter(filePath, false));
+			
 			writer.write(writeText1);
 		} catch (Exception e) {
 			out.print("오류 발생");
@@ -111,6 +112,7 @@
 		try {
 			filePath = application.getRealPath("/WEB-INF/data.txt");
 			writer = new BufferedWriter(new FileWriter(filePath, false));
+			
 			writer.write(writeText2);
 		} catch (Exception e) {
 			out.print("오류 발생");

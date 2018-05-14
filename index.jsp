@@ -98,7 +98,7 @@
 		</div>
 		<%if(userID!=null){ %>
 		<section>
-			<form method="post" action="answerProc.jsp">
+			<form name = "form1" method="post" action="answerProc.jsp">
 				<%
 					BufferedReader reader = null;
 					int cnt = 0; // n번쨰 문항입니다.
@@ -121,38 +121,39 @@
 				
 					for (int i = 3; i < tmpArray.length; i++) {
 								if (tmpArray[1].equals("N")) {
-				%>
-
-				<label><input type="radio" name="question<%=tmpArray[0]%>"
+								
+						%>
+						<label><input type="radio" name="question<%=tmpArray[0]%>"
 					value="<%=i - 2%>"><%=tmpArray[i]%></label><br>
-
-				<%
-					} else {
-				%>
-				<label><input type="checkbox"
+						<%
+					
+								}
+								else {
+									
+			
+										%>
+											<label><input type="checkbox"
 					name="question<%=tmpArray[0]%>" value="<%=i - 2%>"><%=tmpArray[i]%></label><br>
-				<%
-					}
+										<%
+									}
+								}
 							}
-				%>
-
-				<%
-					}
 
 					} catch (Exception e) {
 						System.out.println("오류가 발생했습니다.");
 					}
 					if(cnt==0){
 						%>
-						<center>등록된 질문이 없습니다.</center>
+						<center>등록된 질문이 없습니다.</center><br>
 						<%
-					}
+					}else{
 				%>
 				
 <br>
 				<p>
-					<center><input type="submit" value="제출하기" class = "btn"></center>
+					<center><input type="button" value="제출하기" class = "btn" onClick = "check()"></center>
 				</p><br>
+				<%} %>
 				<input type="hidden" name="cnt" value="<%=cnt%>">
 			</form>
 		</section>
@@ -168,5 +169,50 @@
 <jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+		<script>
+	
+		function check(){
+			var array = [];
+			for(i = 0; i < form1.elements.length; i++){
+				if(form1.elements[i].type == 'checkbox' || form1.elements[i].type == 'radio' ){
+					array.push(form1.elements[i].name);
+				}
+			}
+			var unique = array.filter(function(elem, index, self) {
+			    return index === self.indexOf(elem);
+			})
+	
+			var resultArray = [];
+			for(i = 0; i < unique.length; i++){
+				resultArray.push(lastCheck(unique[i]));
+			}
+		
+			for(i = 0; i < resultArray.length; i++){
+				if(resultArray[i] == "notChecked"){
+					alert("체크되지 않은 질문이 있습니다.");
+					return false;
+				}
+			}
+			form1.submit();
+		}
+		
+		function lastCheck(elementName){
+			  
+		  var chk1 = document.getElementsByName(elementName);
+		  var isSeasonChk = false;
+		  for(var i=0;i<chk1.length;i++){
+			  if(chk1[i].checked == true) {
+	                isSeasonChk = true;
+	                break;
+	            }
+	        }
+		   if(!isSeasonChk){
+	            return "notChecked";
+	        }
+		   return "checked";
+		}
+		</script>
+		<script>
+		</script>
 </body>
 </html>

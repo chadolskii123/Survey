@@ -30,7 +30,7 @@ function check(){
 	
 	
 	if(form1.userPassword.value != form1.userPassword2.value){
-		alert("비밀번호가 일치하지 않습니다..");
+		alert("비밀번호가 일치하지 않습니다.");
 		form1.userPassword.focus();
 		return;
 	}
