@@ -71,19 +71,27 @@
 				<h5><%=cnt%>번 문항입니다.
 				</h5>
 				<h6><%=tmpArray[2]%></h6>
-				<input type="button" value="<%=cnt%>번 문항 삭제" onClick="ask(<%=tmpArray[0]%>)">
+				<input type="button" class = "btn" value="<%=cnt%>번 문항 삭제" onClick="ask(<%=tmpArray[0]%>)">
 				<%
 					}
 
 					} catch (Exception e) {
 						System.out.println("오류가 발생했습니다.");
 					}
+					
+					if(cnt ==0){
+						
+						%>
+						<center>등록된 질문이 없습니다.</center>
+						<%
+					}
+					
 				%>
 				<input type="hidden" name="questionNum" value="0">
 			</form>
 		</section>
 	</div>
-
+<br>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

@@ -74,7 +74,7 @@
 					</div>
 					<div class="form-group">
 						<input type="button" class="btn btn-primary form-control" value="항목추가" onClick="addColumn('item')">
-						<input type="button" class="btn btn-primary form-control" value="항목삭제" onClick="removeColumn('item')">
+						<input type="button" class="btn btn-primary form-control" value="항목삭제" onClick="removeColumn('item')" style ="margin-top:15px">
 					</div>
 					<div class="form-group" style="text-align: center;">
 						<div class="btn-group" data-toggle="buttons">
@@ -115,7 +115,7 @@
 			// var row = table.insertRow(); // IE와 Chrome 동작을 달리함.
 			var row = table.insertRow(rowlen - 1); // HTML에서의 권장 표준 문법
 
-			row.insertCell(0).innerHTML = "<td><input type='text' class = 'form-control' placeholder = '항목' name = '"
+			row.insertCell(0).innerHTML = "<td><input type='text' style = 'margin-top:10px' class = 'form-control' placeholder = '항목' name = '"
 					+ tableid  + (rowlen - 1) + "'> </td>";
 
 			form1.itemCount.value = rowlen;
@@ -132,6 +132,7 @@
 			}
 			
 		    document.getElementById(tableid).deleteRow(rowlen);
+		    form1.itemCount.value = rowlen;
 		}
 		function check(){
 			//TODO: 유효성 체크

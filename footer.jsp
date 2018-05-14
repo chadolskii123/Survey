@@ -9,7 +9,7 @@
 </head>
 <body>
 <footer style="background-color: #f8f8f8; color: black">
-			<div style="text-align: center">
+			<div style="text-align: center; padding:10px;">
 				<small>Copyright &copy; 2018 김소언(Soeon Kim)
 					
 				</small>

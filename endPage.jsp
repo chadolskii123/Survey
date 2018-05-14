@@ -69,9 +69,10 @@
 		</div>
 	</nav>
 		<div class="container">
- 응답해주셔서 감사합니다.
-
- <input type=  "button" value = "홈화면으로 돌아가기" onClick = "location.href = 'index.jsp'">
+ 응답해주셔서 감사합니다.<br><br>
+<p>
+ <input type=  "button" class = "btn" value = "홈화면으로 돌아가기" onClick = "location.href = 'index.jsp'">
+ </p><br>
   </div>
  <jsp:include page="footer.jsp"></jsp:include>
  	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

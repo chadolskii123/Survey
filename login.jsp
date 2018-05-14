@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>적어라</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 <script>
 function check(){
@@ -70,12 +71,19 @@ function check(){
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="userPassword" maxlength="20">
 					</div>
+					
 					<input type="button" class="btn btn-primary form-control"
-						value="login" onClick="check()"> 
+						value="login" onClick="check()">
+					<a class="btn btn-link" href="join.jsp">회원이 아니십니까?</a>
+					
 				</form>
+				
 			</div>
+			
 		</div>
+		
 	</div>
+	
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 

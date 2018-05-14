@@ -13,45 +13,6 @@
 </head>
 <body>
 
-	<%
-		BufferedReader reader = null;
-		String filePath;
-		String str;
-		String tmpText = "";
-
-		String questionText = ""; //질문들만 모아놓은 문자열
-		String[] questionTextArray; //질문들만 모아놓은 배열 
-
-		String answerText = ""; //답변들만 모아놓은 문자열
-		String[] answerTextArray1; //답변들만 모아놓은 배열 (엔터기준)
-		String[] answerTextArray2; //답변들만 모아놓은 배열 (/기준)
-
-		try {
-			filePath = application.getRealPath("/WEB-INF/question.txt");
-			reader = new BufferedReader(new FileReader(filePath));
-
-			while ((str = reader.readLine()) != null) {
-				tmpText += str + System.lineSeparator();
-			}
-		} catch (Exception e) {
-			out.print("오류가 발생하였습니다.");
-		}
-
-		String[] questionArray1 = tmpText.split(System.lineSeparator());
-		for (int i = 0; i < questionArray1.length; i++) {
-			String[] questionArray2 = questionArray1[i].split("/");
-			questionText += questionArray2[2] + System.lineSeparator();
-			for (int j = 3; j < questionArray2.length; j++) {
-				if (j != questionArray2.length - 1)
-					answerText += questionArray2[j] + "/";
-				else
-					answerText += questionArray2[j] + System.lineSeparator();
-			}
-
-		}
-		questionTextArray = questionText.split(System.lineSeparator());
-		answerTextArray1 = answerText.split(System.lineSeparator());
-	%>
 
 
 	<nav class="navbar navbar-default">
@@ -95,6 +56,48 @@
 	</nav>
 	<div class="container">
 		<%
+		BufferedReader reader = null;
+		String filePath;
+		String str;
+		String tmpText = "";
+
+		String questionText = ""; //질문들만 모아놓은 문자열
+		String[] questionTextArray; //질문들만 모아놓은 배열 
+
+		String answerText = ""; //답변들만 모아놓은 문자열
+		String[] answerTextArray1; //답변들만 모아놓은 배열 (엔터기준)
+		String[] answerTextArray2; //답변들만 모아놓은 배열 (/기준)
+
+		try {
+			filePath = application.getRealPath("/WEB-INF/question.txt");
+			reader = new BufferedReader(new FileReader(filePath));
+
+			while ((str = reader.readLine()) != null) {
+				tmpText += str + System.lineSeparator();
+			}
+		} catch (Exception e) {
+			out.print("오류가 발생하였습니다.");
+		}
+		
+		if(tmpText == ""){
+			out.println("<center>응답 데이터가 없습니다.</center>");
+		}else{
+
+		String[] questionArray1 = tmpText.split(System.lineSeparator());
+		for (int i = 0; i < questionArray1.length; i++) {
+			String[] questionArray2 = questionArray1[i].split("/");
+			questionText += questionArray2[2] + System.lineSeparator();
+			for (int j = 3; j < questionArray2.length; j++) {
+				if (j != questionArray2.length - 1)
+					answerText += questionArray2[j] + "/";
+				else
+					answerText += questionArray2[j] + System.lineSeparator();
+			}
+
+		}
+		questionTextArray = questionText.split(System.lineSeparator());
+		answerTextArray1 = answerText.split(System.lineSeparator());
+	
 			reader = null;
 			String tmpArray[];
 			int cnt = 0; // n번쨰 문항입니다.
@@ -112,7 +115,7 @@
 			<h5><%=cnt%>번째 항목(총합:
 				<%=tmpArray[tmpArray.length - 1]%>)
 			</h5>
-			<h6><%=questionTextArray[cnt - 1]%></h6>
+			<h6><%=questionTextArray[cnt - 1]%></h6><br>
 			<ul>
 				<%
 					for (int i = 1; i < tmpArray.length - 1; i++) {
@@ -136,8 +139,10 @@
 			} catch (Exception e) {
 				out.print("오류 발생");
 			}
+		}
 		%>
 	</div>
+	<br>
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

@@ -28,14 +28,15 @@
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 				aria-expanded="false">
 
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.jsp">설문조사</a>
 		</div>
 
 		<div class="collapse navbar-collapse"
-			id="bs-exapmple-navbar-collapse-1">
+			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 		<% if(userID==null){%>
 				<li><a href="login.jsp">로그인</a></li>
@@ -88,8 +89,11 @@
 				유기견 캠페인을 위한 간단한 설문조사입니다.<br>신중하게 답변해주시기 바랍니다.
 			</p>
 			<p class="text-center">
-				<a class="btn btn-primary btn-lg" href="#" role="button">응답 보러
-					가기</a>
+			<%if(userID==null){ %>
+				<a class="btn btn-primary btn-lg" href="login.jsp" role="button">로그인 하기</a>
+					<% } else{%>
+					<a class="btn btn-primary btn-lg" href="logout.jsp" role="button">로그아웃 하기</a>
+					<%} %>
 			</p>
 		</div>
 		<%if(userID!=null){ %>
@@ -107,6 +111,7 @@
 						while ((str = reader.readLine()) != null) {
 							cnt++;
 							tmpArray = str.split("/");
+							
 						
 				%>
 				<h5><%=cnt%>번 문항입니다.
@@ -137,15 +142,26 @@
 					} catch (Exception e) {
 						System.out.println("오류가 발생했습니다.");
 					}
+					if(cnt==0){
+						%>
+						<center>등록된 질문이 없습니다.</center>
+						<%
+					}
 				%>
-
+				
+<br>
 				<p>
-					<input type="submit" value="제출하기">
-				</p>
+					<center><input type="submit" value="제출하기" class = "btn"></center>
+				</p><br>
 				<input type="hidden" name="cnt" value="<%=cnt%>">
 			</form>
 		</section>
-		<%} %>
+		<%} else{
+			%>
+			<center>로그인을 하셔야 설문조사에 참여하실 수 있습니다.</center><br>
+			
+			<% 
+		}%>
 	
 		
 </div>

@@ -40,7 +40,7 @@
 				cntForCount++;
 				lastLine = s;
 		     }
-			 System.out.println(cntForCount + "\n");
+			 
 			if(cntForCount == 0){ 
 				pk = 1; 
 			}

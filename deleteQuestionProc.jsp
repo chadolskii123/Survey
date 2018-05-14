@@ -90,7 +90,7 @@
 					.trim() + System.lineSeparator();
 			
 		}
-		System.out.println("writeText2 쓴것: " + writeText2);
+		
 		
 
 		 //question.txt쓰기
